@@ -376,8 +376,8 @@ class Weighted_mse_mae(nn.Module):
         if self._lambda is not None:
             B, S = mse.size()
             w = torch.arange(1.0, (1.0 + S * self._lambda), self._lambda)
-            w[:-20] = 1.0
-            w = w[:29]
+            w[:-10] = 1.0
+            w = w[:14]
             if torch.cuda.is_available():
                 w = w.to(mse.get_device())
             mse = w * mse
